@@ -433,3 +433,5 @@ $RECYCLE.BIN/
 
 # debug
 /debug
+config.json
+runserver.js

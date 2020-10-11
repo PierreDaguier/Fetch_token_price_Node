@@ -1,0 +1,12 @@
+{ 
+    "token":"any",
+    "Mongodb_adress":"mongodb+srv://<user>:<usr_pswd>>@cluster0.lxx8o.mongodb.net/<db_name>?retryWrites=true&w=majority",
+    "db_name":"token_values_inputs",
+    "db_collection":"your_db_collection_name",
+    "db_user":"<username>",
+    "db_user_pswd":"<password>",
+    "fetch_token_API_url":"<API_URL>",
+    "API_host":"<API_URL_HOST>",
+    "API_Key":"<APIKEY>",
+    "currency":"whatever"
+}
