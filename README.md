@@ -1,11 +1,11 @@
-#titre FETCH ETH VALUE TOKEN SCRIPTS
+# FETCH ETH VALUE TOKEN SCRIPTS
 
 
 
 Une fois lancé, ce programme incorpore chaque heure la valeur de la cryptomonnaie Ether en euros dans une base de données distante
 MongoDb. Lorsque l'utilisateur interroge le serveur sur /, celui ci lui renverra les 24 dernières valeurs au format json.
 
-##titre Vous trouverez ci-dessous une description des différents fichiers disponible dans /src
+## Vous trouverez ci-dessous une description des différents fichiers disponible dans /src
 
 * harvester.js récupère la valeur du token Ether via une API et utilise les fonctions de mongodbstuff.js pour l'inscrire dans la base de données.
 
@@ -15,7 +15,7 @@ MongoDb. Lorsque l'utilisateur interroge le serveur sur /, celui ci lui renverra
 
 * config.json.example correspond aux différentes variables et username nécessaires à l'utilisation de la database et de l'exploitation de l'API dans harvester.js
 
-##titre Ci-dessous la liste des variables/fonctions utiles
+## Ci-dessous la liste des variables/fonctions utiles
 
 * dbtools : correspond aux fonctions et variables extraites depuis mongodbstuff en tant que module, réutilisées dans les autres programmes
 
@@ -27,7 +27,7 @@ MongoDb. Lorsque l'utilisateur interroge le serveur sur /, celui ci lui renverra
 
 * findvalues() : il s'agit de la fonction allant cherchée les entrées dans la collection de la db pour les renvoyer vers l'utilisateur
 
-##titre Pour installer ce programme : 
+## Pour installer ce programme : 
 
 * git clone ce repository
 
@@ -38,7 +38,7 @@ MongoDb. Lorsque l'utilisateur interroge le serveur sur /, celui ci lui renverra
 
 * fs, express, axios et mongodb sont nécessaires au fonctionnement de ce programme
 
-##To Do
+## To Do
 
 * Proposer une requête par ID, correspondant à différentes devises.
 
