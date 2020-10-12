@@ -1,4 +1,5 @@
-Ce programme est en cours de développement
+Une fois lancé, ce programme incorpore chaque heure la valeur de la cryptomonnaie Ether en euros dans une base de données distante
+MongoDb. Lorsque l'utilisateur interroge le serveur sur /, celui ci lui renverra les 24 dernières valeurs au format json.
 
 
 
