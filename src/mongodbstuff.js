@@ -19,16 +19,16 @@ const url = infos.Mongodb_adress
 const dbName = infos.db_name
 
 // Document insertion fonction
-const insertvalues = async () => {
+const insertvalues = async (newtokenvalue) => {
     // Get the values collection
     const client = await MongoClient.connect(url, mongodbOptions)
     const db = client.db(dbName)
 	const collection = db.collection(`${infos.db_collection}`)
-	let valjson = await fs.readFile("./values.json")
-	let valjsonparse = JSON.parse(valjson)
+	// let valjson = await fs.readFile("./values.json")
+	// let valjsonparse = JSON.parse(valjson)
 	// Insert values into a temporary json values.json file
 	await collection.insertOne(
-	    valjsonparse, function(err, result) {
+	    newtokenvalue, function(err, result) {
 	    assert.equal(err, null)
 		console.log("Inserted one data into the collection")
 		client.close()
@@ -36,18 +36,17 @@ const insertvalues = async () => {
         }
 	);
 	// Delete this values.json just after put it into the database
-	fs.unlink('./values.json', (err) => {
-		if (err) throw err;
-		console.log('./values.json was deleted');
-	});
+	//fs.unlink('./values.json', (err) => {
+	//	if (err) throw err;
+	//	console.log('./values.json was deleted');
+	//});
 } 
 // Values find function
 const findvalues = async () => {
     // Get the values collection
     const client = await MongoClient.connect(url, mongodbOptions)
     const db = client.db(dbName)
-    console.log('dbname: ', dbName)
-    console.log('collection:', `${infos.db_collection}`)
+ 
     // Get the values collection
     const collection = db.collection(`${infos.db_collection}`)
     // Find some values
@@ -56,7 +55,7 @@ const findvalues = async () => {
         .sort({ _id: -1 })
         .limit(24)
         .toArray()
-    // console.log('AZEAZE:', valuesdisplayed)
+    
     client.close()
     return valuesdisplayed
 }
@@ -66,8 +65,8 @@ const findvalues = async () => {
 // This is the functions exported to be used in harvester.js
 module.exports = {
     // Use connect method to connect to the server and insert documents in the collection
-    insertion: async (callback, err) => {
-		await insertvalues()
+    insertion: async (newtokenvalue) => {
+		await insertvalues(newtokenvalue)
 		console.log('Connected successfully to server')
         
     },

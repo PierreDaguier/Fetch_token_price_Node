@@ -9,10 +9,11 @@ const fs = require('fs')
 const config = fs.readFileSync('./config.json')
 const infos = JSON.parse(config)
 const dbName = infos.db_name
+const harvester = require('./harvester.js')
 
 // Cron module use harvester to fetch ethereum values every hour
 const CronJob = require('cron').CronJob
-const job = new CronJob('0 0 */1 * * *', dbtools.findtokens())
+const job = new CronJob('0 * * * * *', harvester.exportdatatodb())
 job.start()
 
 const PORT = process.env.PORT || 4000
@@ -21,10 +22,8 @@ const PORT = process.env.PORT || 4000
 app.get('/', async (req, res) => {
     const last24values = await dbtools.findvalues()
     const jsonlast24values = JSON.stringify(last24values)
-    await fspromises.writeFile('./tokenvalues.json', jsonlast24values)
     res.send(jsonlast24values)
-    await fspromises.unlink('./tokenvalues.json')
-    console.log('tokenvalues.json was deleted')
+    
 })
 
 app.listen(PORT, (req, res) => {
