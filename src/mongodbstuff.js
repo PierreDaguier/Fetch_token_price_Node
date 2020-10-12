@@ -24,9 +24,7 @@ const insertvalues = async (newtokenvalue) => {
     const client = await MongoClient.connect(url, mongodbOptions)
     const db = client.db(dbName)
 	const collection = db.collection(`${infos.db_collection}`)
-	// let valjson = await fs.readFile("./values.json")
-	// let valjsonparse = JSON.parse(valjson)
-	// Insert values into a temporary json values.json file
+
 	await collection.insertOne(
 	    newtokenvalue, function(err, result) {
 	    assert.equal(err, null)
@@ -34,13 +32,8 @@ const insertvalues = async (newtokenvalue) => {
 		client.close()
 	    return result 
         }
-	);
-	// Delete this values.json just after put it into the database
-	//fs.unlink('./values.json', (err) => {
-	//	if (err) throw err;
-	//	console.log('./values.json was deleted');
-	//});
-} 
+	);}
+
 // Values find function
 const findvalues = async () => {
     // Get the values collection
