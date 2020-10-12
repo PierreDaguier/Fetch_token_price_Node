@@ -17,6 +17,7 @@ job.start()
 
 const PORT = process.env.PORT || 4000
 
+// This is the express answer to request on /
 app.get('/', async (req, res) => {
     const last24values = await dbtools.findvalues()
     const jsonlast24values = JSON.stringify(last24values)

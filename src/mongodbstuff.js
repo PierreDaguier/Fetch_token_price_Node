@@ -30,14 +30,15 @@ const insertvalues = async () => {
 	await collection.insertOne(
 	    valjsonparse, function(err, result) {
 	    assert.equal(err, null)
-	    console.log("Inserted one data into the collection")
+		console.log("Inserted one data into the collection")
+		client.close()
 	    return result 
         }
 	);
 	// Delete this values.json just after put it into the database
 	fs.unlink('./values.json', (err) => {
 		if (err) throw err;
-		console.log('path/file.txt was deleted');
+		console.log('./values.json was deleted');
 	});
 } 
 // Values find function
@@ -55,7 +56,7 @@ const findvalues = async () => {
         .sort({ _id: -1 })
         .limit(24)
         .toArray()
-    console.log('AZEAZE:', valuesdisplayed)
+    // console.log('AZEAZE:', valuesdisplayed)
     client.close()
     return valuesdisplayed
 }
@@ -65,15 +66,10 @@ const findvalues = async () => {
 // This is the functions exported to be used in harvester.js
 module.exports = {
     // Use connect method to connect to the server and insert documents in the collection
-    insertion: function (callback, err) {
-        MongoClient.connect(url, mongodbOptions, function (err, client) {
-            assert.equal(null, err)
-            console.log('Connected successfully to server')
-            const db = client.db(dbName)
-            insertvalues(db, function () {
-                client.close()
-            })
-        })
+    insertion: async (callback, err) => {
+		await insertvalues()
+		console.log('Connected successfully to server')
+        
     },
     // Use connect method to connect to the server and shows what's in, in an array
     findtokens: async (callback, err) => {
