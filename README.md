@@ -5,11 +5,11 @@
 Une fois lancé, ce programme incorpore chaque heure la valeur de la cryptomonnaie Ether en euros dans une base de données distante
 MongoDb. Lorsque l'utilisateur interroge le serveur sur /, celui ci lui renverra les 24 dernières valeurs au format json.
 
-## Vous trouverez ci-dessous une description des différents fichiers disponible dans /src
+## Vous trouverez ci-dessous une description des différents fichiers disponibles dans /src
 
 * harvester.js récupère la valeur du token Ether via une API et utilise les fonctions de mongodbstuff.js pour l'inscrire dans la base de données.
 
-* index.js démarre le serveur, il doit cibler pour le démarrage ( cf package.json)
+* index.js démarre le serveur, il doit cibler pour le démarrage (cf package.json)
 
 * mongodbstuff.js contient les fonctions d'interaction avec la database.
 
@@ -25,7 +25,7 @@ MongoDb. Lorsque l'utilisateur interroge le serveur sur /, celui ci lui renverra
 
 * insertvalues() : il s'agit de la fonction qui insert la valeur de la devise prélevée à date dans la db
 
-* findvalues() : il s'agit de la fonction allant cherchée les entrées dans la collection de la db pour les renvoyer vers l'utilisateur
+* findvalues() : il s'agit de la fonction allant chercher les entrées dans la collection de la db pour les renvoyer vers l'utilisateur
 
 ## Pour installer ce programme : 
 
